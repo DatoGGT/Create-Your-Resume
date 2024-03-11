@@ -1,0 +1,116 @@
+.custom-textarea{
+    height: 150px;
+    border-radius: 10px;
+}
+input {
+    border-radius: 6px;
+    height: 35px;
+}
+.profileImg {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    margin-bottom: 44px;
+}
+.uploader{
+    display: inline-block;
+    background-color: rgb(72, 72, 255); 
+    color: white; 
+    padding: 10px; 
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 29px;
+}
+label {
+    color:white;
+}
+
+h3,h5,h6 {
+    color:white;
+}
+h4 {
+    color:#00eeff;  
+}
+
+.mainsection {
+    display: flex;
+    background-color: rgba(236, 236, 236, 0.943);
+    border-radius: 10px;
+}
+
+.leftaside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 230px;
+    height: auto;
+    background-color: rgb(53, 73, 67);
+    border-radius: 10px;
+}
+
+.contactme,
+.education,
+.skilss {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: #ffffff;
+}
+
+.contactinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 202px;
+}
+
+.contactinfo p {
+    white-space: nowrap; 
+}
+
+.profile {
+    width: 70px;
+    height: 80px;
+    object-fit: contain;
+}
+
+
+.contactme,
+.education,
+.skilss {
+    margin-top: 10px;
+}
+
+.leftaside,
+.right {
+    margin: 10px;
+}
+
+
+.info-section {
+    padding: 20px;
+}
+
+.about-me,
+.experience,
+.references {
+    margin-top: 10px;
+}
+@media (min-width: 670px) and (max-width: 1300px) {
+    .mainsection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 668px;
+    }
+    }

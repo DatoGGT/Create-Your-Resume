@@ -1,0 +1,278 @@
+
+<section class="col-11 m-auto   d-flex flex-column gap-5">
+  <h1 class="text-info">Create Your Resume &#x270E;</h1>
+
+<article class="d-flex justify-content-between">
+  <aside class="left col-6 w-50">
+
+<div class="d-flex flex-column gap-3"> 
+
+  <div class="container d-flex flex-column gap-4">
+    <div class="row">
+      <div class="col-sm-10 col-md-6 d-flex flex-column gap-2">
+        <label>First name</label>
+        <input [(ngModel)]="resume.Fname" type="text" placeholder="First Name">
+      </div>
+      <div class="col-sm-10 col-md-6 d-flex flex-column gap-2 ">
+        <label>Last Name</label>
+        <input [(ngModel)]="resume.Lname" type="text" placeholder="Last Name">
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-10 col-md-6  d-flex flex-column gap-2" >
+          <label>Proffesionall Title</label>
+          <input [(ngModel)]="resume.ProffesionallTitle" type="text" placeholder="Proffesionall Title">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-10 col-md-6  d-flex flex-column gap-2">
+          <label>Phone Number</label>
+          <input [(ngModel)]="resume.Phone" type="number" placeholder="Phone Number">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-10 col-md-6  d-flex flex-column gap-2">
+          <label>E-Mail</label>
+          <input [(ngModel)]="resume.Email" type="email" placeholder="E-Mail">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-md-6  d-flex flex-column gap-2">
+          <label>Address</label>
+          <input [(ngModel)]="resume.Address" type="text" placeholder="Address"  >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-md-6 d-flex flex-column gap-2"  > 
+          <label>Education</label>
+          <input [(ngModel)]="resume.Education" placeholder="Add Education" (keyup.enter)="addEducation($event)">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-10 col-md-6 d-flex flex-column gap-2">
+          <label>Skills</label>
+          <input [(ngModel)]="resume.Skilss"  placeholder="Add Skills" (keyup.enter)="addSkilss($event)" >
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-10 col-md-6 d-flex flex-column gap-2">
+          <label>Languages</label>
+          <input [(ngModel)]="resume.Languages" placeholder="Add Languages" (keyup.enter)="addLanguages($event)" >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-10 col-md-6   d-flex flex-column gap-2">
+          <label >Experience</label>
+          <input [(ngModel)]="resume.Summary" cols="30" rows="10" placeholder="Add Your Experience"  (keyup.enter)="addExperience($event)"  >
+        </div>
+      </div>
+      
+<div class="row">
+  <div class="col-sm-10 col-md-10 col-lg-8 d-flex flex-column gap-2">
+    <label>About Me</label>
+    <textarea [(ngModel)]="resume.AboutMe" cols="30" rows="10" placeholder="About Me" class="custom-textarea"></textarea>
+
+  </div>
+</div>
+      
+      <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-8 d-flex flex-column gap-2">
+          <label>Refferences</label>
+          <textarea [(ngModel)]="resume.Refferences" cols="30" rows="10" placeholder="Add Refferences"  class=" custom-textarea" (keyup.enter)="addReferences($event)" ></textarea>
+        </div>
+      </div>
+      <button  (click) ="saveInfo()" type="button" class="btn btn-primary col-sm-6 col-md-10 col-lg-4 mb-4" >Save</button>
+  </div>
+
+</div>
+</aside>
+
+
+
+
+
+<aside class="right col-6 w-50">
+<figure *ngIf ="resume.image" class="d-flex gap-2 flex-column">
+    <img [src]="resume.image" class="rounded-circle profileImg" alt="">
+  </figure>
+  <label for="uploadInput"  class="uploader">Upload Image</label>
+  <input id="uploadInput" (change)="uploadImage($event)" type="file" class="d-none">
+  
+  <div class="d-flex gap-2">
+    <h5 class="text-break">{{resume.Fname}}</h5>
+    <h5 class="text-break">{{resume.Lname}}</h5>
+  </div>
+<h6 class="text-break">{{resume.ProffesionallTitle}}</h6>
+<div class="line"></div>
+
+
+
+<div class=" d-flex gap-5 flex-column flex-md-row">
+<aside class="left w-50">
+
+  <div class="container">
+<div class="row pb-2">
+    <h4>CONTACT</h4>
+    <h5 class="text-break">{{resume.Phone}}</h5>
+    <h5 class="text-break">{{resume.Email}}</h5>
+    <h5 class="text-break">{{resume.Address}}</h5>
+  </div>
+<!-- ------------------------------------------------- -->
+<div class="row pb-3">
+  <h4>EDUCATION</h4>
+  <h5 *ngFor="let educationItem of resuinfo.Education"> {{ educationItem }}</h5>
+</div>
+    
+<!-----------------------------------------  -->
+<div class="row pb-3">
+  <h4>SKILLS</h4>
+  <h5 *ngFor="let skill of resuinfo.Skilss"> {{ skill }}</h5>
+</div>
+        
+
+      
+<!-- ------------------------------------------------ -->
+<div class="row pb-3">
+  <h4>LANGUAGES</h4>
+  <h5 *ngFor="let language of resuinfo.Languages"> {{ language }}</h5>
+</div>
+  
+    
+  </div>
+</aside>
+
+
+
+
+<aside class="right w-50">
+<div class="container d-flex flex-column gap-3">
+  <!-- ----------------------------------------- -->
+<div class="row">
+  <h4>ABOUT ME</h4>
+      <h5 class="text-break">{{resume.AboutMe}}</h5>
+    </div>
+    <!-- --------------------------- -->
+
+    <div class="row">
+      <h4>EXPERIENCE</h4>
+      <h5 *ngFor ="let exp of resuinfo.Summary" class="text-break">{{exp}} </h5>
+    </div>
+  
+  <!-- ----------------------------- -->
+  <div class="row">
+
+    <h4>REFFERENCES</h4>
+    <h5 class="text-break">{{resume.Refferences}}</h5>
+  </div>
+
+    
+</div>
+  
+
+</aside>
+</div>
+
+
+
+</aside>
+
+
+</article>
+
+
+
+</section>
+
+
+
+<!-- resume format -->
+<article  *ngFor="let resu of resumeresult" class="col-sm-12 col-md-6  d-flex flex-column gap-5 justify-content-center align-items-center mt-5" id="Html2pdf">
+
+<section class="col-sm-10 col-lg-9  gap-5 mainsection p-2 ">
+  <article class=" d-flex justify-content-between ">
+
+
+  <aside class="left col-sm-12 col-md-6  pt-5 pb-5 leftaside ">
+      <div class="container">
+          <figure class="d-flex justify-content-center">
+              <img [src]="resu.image" alt="" class="rounded-circle profile">
+          </figure>
+          <div class="row d-flex flex-column justify-content-center align-items-center gap-3 ">
+              <div class="contactme">
+                  <span class="text-black">CONTACT ME</span>
+              </div>
+              <div class="col-sm-12  col-md-6 contactinfo">
+                  <p class="text-white  "> &#x2706;  {{resu.Phone}} </p>
+                  <p class="text-white  ">&#x2709;  {{resu.Email}}</p>
+                  <p class="text-white  ">📍 {{resu.Address}}</p>
+              </div>
+          </div>
+          <div class="row d-flex flex-column justify-content-center align-items-center gap-2">
+              <div class="education">
+                  <p class="text-black mt-3">EDUCATION</p>
+              </div>
+              <div class="contactinfo">
+                  <p *ngFor="let educationItem of resuinfo.Education" class="text-white"> {{ educationItem }}</p>
+              </div>
+          </div>
+          <div class="row d-flex flex-column  justify-content-center align-items-center gap-2">
+              <div class="skilss">
+                  <p class="text-black mt-3">SKILLS</p>
+              </div>
+              <div class="contactinfo">
+                  <p *ngFor="let skill of resuinfo.Skilss" class="text-white"> {{ skill }}</p>
+              </div>
+          </div>
+          <div class="row d-flex flex-column  justify-content-center align-items-center gap-2">
+              <div class="skilss">
+                  <p class="text-black mt-3">LANGUAGES</p>
+              </div>
+              <div class="contactinfo">
+                  <p *ngFor="let lang of resuinfo.Languages" class="text-white"> {{ lang }}</p>
+              </div>
+          </div>
+
+      </div>
+  </aside>
+
+  <aside class="right col-sm-12 col-md-6 w-50 bg-white rounded">
+      <div class="container">
+          <div class="row">
+              <div class="d-flex flex-column  gap-5 pt-5">
+                  <div class="name">
+                      <h5 class="text-black">{{resu.Fname}}</h5>
+                      <h4 class="text-black">{{resu.Lname}}</h4>
+                      <small>{{resu.ProffesionallTitle}}</small>
+                  <hr>
+                  </div>
+                  <div class="col-sm-8 col-md-10 aboutme">
+                      <h5 class="text-black">ABOUT ME</h5>
+                      <small class="text-break">{{resu.AboutMe}}</small>
+                  </div>
+                  <div class="experiance">
+                      <h5 class="text-black">WORK EXPERIANCE</h5>
+                      <p *ngFor="let expe of resuinfo.Summary" class="text-black"> {{ expe }}</p>
+                  </div>
+                  <div class="references">
+                      <h5 class="text-black">REFERENCES</h5>
+                      <small class="text-break">{{resu.Refferences}}</small>
+
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+    </aside>
+    
+    
+  </article>
+</section>
+<button (click)="downloadPDF()" class="btn btn-primary col-sm-6 col-md-10 col-lg-4 mb-4">&#x21a1; Download Resume</button>
+
+</article>
